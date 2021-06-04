@@ -1,0 +1,32 @@
+{
+    "name": "bastinald/laravel-livewire-ui",
+    "homepage": "https://github.com/bastinald/laravel-livewire-ui",
+    "description": "Laravel Livewire auth & CRUD starter kit.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kevin Dion",
+            "email": "bastinald@icloud.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "bastinald/laravel-automatic-migrations": "^1.0",
+        "bastinald/laravel-bootstrap-components": "^1.0",
+        "bastinald/laravel-livewire-routes": "^1.0",
+        "laravel/framework": "^8.0",
+        "lukeraymonddowning/honey": "^0.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bastinald\\LaravelLivewireUi\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bastinald\\LaravelLivewireUi\\Providers\\LaravelLivewireUiProvider"
+            ]
+        }
+    }
+}
