@@ -13,7 +13,7 @@ class CrudCommand extends Command
 {
     use MakesStubs;
 
-    protected $signature = 'make:crud {class} {--force}';
+    protected $signature = 'make:crud {model} {--force}';
     protected $homeParser, $componentParser, $modelParser;
 
     public function handle()
@@ -32,7 +32,7 @@ class CrudCommand extends Command
             Artisan::call('make:auth', [], $this->getOutput());
         }
 
-        if ($this->argument('class') == 'User') {
+        if ($this->argument('model') == 'User') {
             $this->makeStubs(
                 'crud-user',
                 ['app/Http/Livewire', 'resources/views/livewire'],
@@ -49,7 +49,7 @@ class CrudCommand extends Command
         $this->insertNavItem();
 
         Artisan::call('make:amodel', [
-            'name' => $this->argument('class'),
+            'name' => $this->argument('model'),
             '--force' => $this->option('force'),
         ], $this->getOutput());
 
@@ -67,13 +67,13 @@ class CrudCommand extends Command
         $this->componentParser = new ComponentParser(
             config('livewire.class_namespace'),
             config('livewire.view_path'),
-            Str::plural($this->argument('class')) . '/Index'
+            Str::plural($this->argument('model')) . '/Index'
         );
 
         $this->modelParser = new ComponentParser(
             is_dir(app_path('Models')) ? 'App\\Models' : 'App',
             config('livewire.view_path'),
-            Arr::last(explode('/', $this->argument('class')))
+            Arr::last(explode('/', $this->argument('model')))
         );
     }
 
@@ -95,7 +95,7 @@ class CrudCommand extends Command
             'dummy-route-uri' => Str::replace('.', '/', $dummyRouteName),
             'dummy-route-name' => $dummyRouteName,
             'dummy-views' => $dummyViews,
-            'dummy-icon' => $this->argument('class') == 'User' ? 'users' : 'database',
+            'dummy-icon' => $this->argument('model') == 'User' ? 'users' : 'database',
         ];
     }
 
