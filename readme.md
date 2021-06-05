@@ -6,7 +6,7 @@ It uses Bootstrap 5 and promotes the usage of full page Livewire components rath
 
 ### Packages Used
 
-The following packages are used by this package, so you may want to become familiar with them. While using these packages is promoted and recommended, it is are entirely optional.
+The following packages are used by this package, so you may want to become familiar with them. While using these packages is promoted and recommended, it is entirely optional.
 
 - [Laravel Automatic Migrations](https://github.com/bastinald/laravel-automatic-migrations)
 - [Laravel Bootstrap Components](https://github.com/bastinald/laravel-bootstrap-components)

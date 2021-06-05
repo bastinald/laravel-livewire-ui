@@ -39,6 +39,11 @@ class AuthCommand extends Command
             $homeParser
         );
 
+        Artisan::call('make:amodel', [
+            'name' => 'User',
+            '--force' => true,
+        ], $this->getOutput());
+
         Artisan::call('migrate:auto', [], $this->getOutput());
 
         $this->info('Auth made!');
