@@ -2,7 +2,7 @@
 
 This package provides Laravel Livewire & Bootstrap UI, Auth, & CRUD scaffolding commands to make your development speeds blazing fast. With it, you can generate full, preconfigured Bootstrap UI, complete Auth scaffolding including password resets and profile updating, and Create, Read, Update, and Delete operations. The CRUD files even have searching, sorting, and filtering.
 
-### Documentation
+## Documentation
 
 - [Requirements](#requirements)
 - [Packages Used](#packages-used)
@@ -18,7 +18,7 @@ This package provides Laravel Livewire & Bootstrap UI, Auth, & CRUD scaffolding 
 - a server with Laravel 8 support
 - NPM installed on the dev machine
 
-### Packages Used
+## Packages Used
 
 The following packages are used by this package, so you may want to become familiar with them:
 
