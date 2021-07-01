@@ -13,6 +13,7 @@
     "require": {
         "bastinald/laravel-automatic-migrations": "^2.0",
         "bastinald/laravel-bootstrap-components": "^2.0",
+        "bastinald/laravel-livewire-loader": "^2.0",
         "bastinald/laravel-livewire-modals": "^2.0",
         "bastinald/laravel-livewire-routes": "^2.0",
         "jamesmills/laravel-timezone": "^1.9",

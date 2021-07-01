@@ -23,6 +23,7 @@
         {{ $slot }}
     </div>
 
+    <livewire:loader/>
     <livewire:modals/>
     <livewire:scripts/>
     <script src="{{ asset('js/app.js') }}"></script>
