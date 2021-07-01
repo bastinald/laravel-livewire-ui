@@ -2,41 +2,39 @@
 
 namespace App\Http\Livewire\Auth;
 
-use Bastinald\LaravelLivewireUi\Traits\WithModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class ProfileUpdate extends Component
 {
-    use WithModel;
+    public $name, $email;
 
     public function mount()
     {
-        $this->setModel(Auth::user()->toArray());
+        $this->fill(Auth::user());
     }
 
     public function render()
     {
-        return view('livewire.auth.profile-update');
+        return view('auth.profile-update');
     }
 
     public function rules()
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255',
-                Rule::unique('users')->ignoreModel(Auth::user())],
+            'email' => ['required', 'email', Rule::unique('users')->ignore(Auth::user()->id)],
         ];
     }
 
     public function save()
     {
-        $validatedModel = $this->validateModel();
+        $validated = $this->validate();
 
-        Auth::user()->update($validatedModel);
+        Auth::user()->update($validated);
 
-        $this->emitTo('layouts.nav', '$refresh');
         $this->emit('hideModal');
+        $this->emit('$refresh');
     }
 }

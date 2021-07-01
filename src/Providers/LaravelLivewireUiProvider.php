@@ -2,11 +2,10 @@
 
 namespace Bastinald\LaravelLivewireUi\Providers;
 
-use Bastinald\LaravelLivewireUi\Commands\AuthCommand;
-use Bastinald\LaravelLivewireUi\Commands\CrudCommand;
-use Bastinald\LaravelLivewireUi\Components\Modal;
+use Bastinald\LaravelLivewireUi\Commands\MakeAuthCommand;
+use Bastinald\LaravelLivewireUi\Commands\MakeCrudCommand;
+use Bastinald\LaravelLivewireUi\Commands\MakeUiCommand;
 use Illuminate\Support\ServiceProvider;
-use Livewire\Livewire;
 
 class LaravelLivewireUiProvider extends ServiceProvider
 {
@@ -14,12 +13,11 @@ class LaravelLivewireUiProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                AuthCommand::class,
-                CrudCommand::class,
+                MakeAuthCommand::class,
+                MakeCrudCommand::class,
+                MakeUiCommand::class,
             ]);
         }
-
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'laravel-livewire-ui');
 
         $this->publishes(
             [__DIR__ . '/../../config/laravel-livewire-ui.php' => config_path('laravel-livewire-ui.php')],
@@ -30,13 +28,6 @@ class LaravelLivewireUiProvider extends ServiceProvider
             [__DIR__ . '/../../resources/stubs' => resource_path('stubs/vendor/laravel-livewire-ui')],
             ['laravel-livewire-ui', 'laravel-livewire-ui:stubs']
         );
-
-        $this->publishes(
-            [__DIR__ . '/../../resources/views' => resource_path('views/vendor/laravel-livewire-ui')],
-            ['laravel-livewire-ui', 'laravel-livewire-ui:views']
-        );
-
-        Livewire::component('modal', Modal::class);
     }
 
     public function register()

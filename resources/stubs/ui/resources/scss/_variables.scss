@@ -1,0 +1,37 @@
+$light: #f1f3f5;
+$white: #ffffff;
+$primary: #ff2d20;
+$min-contrast-ratio: 3;
+
+$border-radius: 0.5rem;
+$border-radius-lg: $border-radius;
+$border-radius-sm: $border-radius;
+
+$card-cap-bg: $white;
+$card-cap-padding-y: 1rem;
+
+$enable-negative-margins: true;
+$enable-validation-icons: false;
+
+$list-group-action-hover-color: inherit;
+$list-group-item-padding-y: 1rem;
+
+$navbar-toggler-padding-x: 0;
+$navbar-toggler-padding-y: 0;
+$navbar-dark-toggler-border-color: transparent;
+$navbar-light-toggler-border-color: transparent;
+
+$container-max-width: 960px;
+$dd-margin-bottom: 1rem;
+$font-size-base: 0.9rem;
+$form-label-margin-bottom: 0.25rem;
+$input-group-addon-bg: $white;
+$link-decoration: none;
+
+.container {
+    max-width: $container-max-width !important;
+}
+
+dd {
+    margin-bottom: $dd-margin-bottom !important;
+}

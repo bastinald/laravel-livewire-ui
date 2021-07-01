@@ -2,27 +2,24 @@
 
 namespace App\Http\Livewire\Auth;
 
-use Bastinald\LaravelLivewireUi\Traits\WithModel;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 
 class PasswordForgot extends Component
 {
-    use WithModel;
-
-    public $status;
+    public $email, $status;
 
     public function route()
     {
-        return Route::get('/password-forgot', static::class)
+        return Route::get('password-forgot', static::class)
             ->name('password.forgot')
             ->middleware('guest');
     }
 
     public function render()
     {
-        return view('livewire.auth.password-forgot');
+        return view('auth.password-forgot');
     }
 
     public function rules()
@@ -34,11 +31,13 @@ class PasswordForgot extends Component
 
     public function send()
     {
-        $validatedModel = $this->validateModel();
-        $status = Password::sendResetLink($validatedModel);
+        $this->validate();
+
+        $status = Password::sendResetLink($this->only(['email']));
 
         if ($status != Password::RESET_LINK_SENT) {
             $this->addError('email', __($status));
+            $this->reset('status');
 
             return;
         }

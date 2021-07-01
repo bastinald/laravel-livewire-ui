@@ -2,33 +2,31 @@
 
 namespace App\Http\Livewire\Auth;
 
-use Bastinald\LaravelLivewireUi\Traits\WithModel;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules;
 use Livewire\Component;
 
 class PasswordChange extends Component
 {
-    use WithModel;
+    public $current_password, $password, $password_confirmation;
 
     public function render()
     {
-        return view('livewire.auth.password-change');
+        return view('auth.password-change');
     }
 
     public function rules()
     {
         return [
             'current_password' => ['required', 'password'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed'],
         ];
     }
 
     public function save()
     {
-        $this->validateModel();
+        $this->validate();
 
-        Auth::user()->update($this->getModel(['password']));
+        Auth::user()->update($this->only(['password']));
 
         $this->emit('hideModal');
     }

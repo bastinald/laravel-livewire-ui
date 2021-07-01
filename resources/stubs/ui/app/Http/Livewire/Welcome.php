@@ -5,16 +5,15 @@ namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 
-class Home extends Component
+class Welcome extends Component
 {
     public function route()
     {
-        return Route::get('home', static::class)
-            ->middleware('auth');
+        return Route::get('/', static::class);
     }
 
     public function render()
     {
-        return view('home');
+        return view('welcome');
     }
 }

@@ -2,56 +2,55 @@
 
 namespace App\Http\Livewire\Auth;
 
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
-use Bastinald\LaravelLivewireUi\Traits\WithModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Validation\Rules;
 use Livewire\Component;
 
 class PasswordReset extends Component
 {
-    use WithModel;
+    public $token, $email, $password, $password_confirmation;
 
     public function route()
     {
-        return Route::get('/password-reset/{token}/{email}', static::class)
+        return Route::get('password-reset/{token}/{email}', static::class)
             ->name('password.reset')
             ->middleware('guest');
     }
 
     public function mount($token, $email)
     {
-        $this->setModel([
-            'token' => $token,
-            'email' => $email,
-        ]);
+        $this->token = $token;
+        $this->email = $email;
     }
 
     public function render()
     {
-        return view('livewire.auth.password-reset');
+        return view('auth.password-reset');
     }
 
     public function rules()
     {
         return [
-            'token' => ['required'],
             'email' => ['required', 'email'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed'],
         ];
     }
 
     public function save()
     {
-        $validatedModel = $this->validateModel();
+        $this->validate();
 
-        $status = Password::reset($validatedModel, function ($user) {
-            $user->update($this->getModel(['password']));
+        $status = Password::reset(
+            $this->only(['token', 'email', 'password', 'password_confirmation']),
+            function (User $user) {
+                $user->update($this->only(['password']));
 
-            Auth::login($user);
-        });
+                Auth::login($user, true);
+            }
+        );
 
         if ($status != Password::PASSWORD_RESET) {
             $this->addError('email', __($status));
