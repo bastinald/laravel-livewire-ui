@@ -98,7 +98,7 @@ php artisan vendor:publish --tag=laravel-livewire-ui
 Update the `stub_path` in `config/laravel-livewire-ui.php`:
 
 ```php
-'stub_path' => base_path('resources/stubs/vendor/laravel-livewire-ui'),
+'stub_path' => resource_path('stubs/vendor/laravel-livewire-ui'),
 ```
 
 Now edit the stub files inside `resources/stubs/vendor/laravel-livewire-ui`. The commands will now use these stub files to make Auth & CRUD.
