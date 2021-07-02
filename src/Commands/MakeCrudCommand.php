@@ -5,6 +5,7 @@ namespace Bastinald\LaravelLivewireUi\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 use Livewire\Commands\ComponentParser;
 
@@ -46,6 +47,7 @@ class MakeCrudCommand extends Command
 
         $this->setReplaces();
         $this->makeStubs();
+        $this->makeAModel();
 
         $this->info('CRUD made successfully.');
         $this->info(url($this->replaces['dummy-route-uri']));
@@ -88,6 +90,16 @@ class MakeCrudCommand extends Command
             $this->filesystem->put($basePath, $contents);
 
             $this->warn('File created: <info>' . $path . '</info>');
+        }
+    }
+
+    private function makeAModel()
+    {
+        if (!$this->filesystem->exists($this->modelParser->classPath())) {
+            Artisan::call('make:amodel', [
+                'class' => $this->modelParser->className(),
+                '--factory' => true,
+            ], $this->getOutput());
         }
     }
 }
