@@ -102,7 +102,7 @@ You can also make CRUD inside a subdirectory e.g.:
 php artisan make:crud Admin/Users
 ```
 
-The package is smart enough to know that the model would be `User` in the example above.
+If the model does not exist already, it will be created automatically. The package is smart enough to know that the model would be `User` in the example above.
 
 ## Publishing Stubs
 
