@@ -11,7 +11,7 @@ use Livewire\Commands\ComponentParser;
 
 class MakeCrudCommand extends Command
 {
-    protected $signature = 'make:crud {class} {--force}';
+    protected $signature = 'make:crud {path} {--model=} {--force}';
     private $filesystem;
     private $componentParser;
     private $modelParser;
@@ -24,13 +24,13 @@ class MakeCrudCommand extends Command
         $this->componentParser = new ComponentParser(
             config('livewire.class_namespace'),
             config('livewire.view_path'),
-            Str::plural($this->argument('class')) . '\\Index'
+            Str::plural($this->argument('path')) . '\\Index'
         );
 
         $this->modelParser = new ComponentParser(
             is_dir(app_path('Models')) ? 'App\\Models' : 'App',
             config('livewire.view_path'),
-            Str::singular(Arr::last(explode('\\', $this->componentParser->classNamespace()))),
+            $this->option('model') ?? Str::singular(Arr::last(explode('\\', $this->componentParser->classNamespace()))),
         );
 
         if ($this->filesystem->exists($this->componentParser->classPath()) && !$this->option('force')) {
@@ -90,7 +90,7 @@ class MakeCrudCommand extends Command
     {
         if (!$this->filesystem->exists($this->modelParser->classPath())) {
             Artisan::call('make:amodel', [
-                'class' => $this->modelParser->className(),
+                'class' => $this->option('model') ?? $this->modelParser->className(),
             ], $this->getOutput());
 
             Artisan::call('migrate:auto', [], $this->getOutput());

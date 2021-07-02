@@ -90,10 +90,16 @@ Only run this command after making UI if you did not use the `-a` option.
 
 ### Making CRUD
 
-Make CRUD scaffolding for a model class including Create, Read, Update, etc.:
+Make CRUD scaffolding for a model including Create, Read, Update, etc.:
 
 ```console
-php artisan make:crud {class} {--force}
+php artisan make:crud {path} {--model=} {--force}
+```
+
+The `path` is the path the components and views will use e.g.:
+
+```console
+php artisan make:crud Users
 ```
 
 You can also make CRUD inside a subdirectory e.g.: 
@@ -102,7 +108,15 @@ You can also make CRUD inside a subdirectory e.g.:
 php artisan make:crud Admin/Users
 ```
 
-If the model does not exist already, it will be created automatically. The package is smart enough to know that the model would be `User` in the example above.
+If the model does not exist, it will be created automatically. The package is smart enough to know that the model would be `User` in the two examples above.
+
+You can also specify the model class you wish to use as well:
+
+```console
+php artisan make:crud Admin/Users --model=Admin/User
+```
+
+This is handy if you want the model in a subdirectory, or if the name is completely different from the CRUD path.
 
 ## Publishing Stubs
 
