@@ -9,7 +9,7 @@ class Password extends Component
 {
     public $dummyModelVariable, $password, $password_confirmation;
 
-    public function mount(DummyModelClass $dummyModelVariable = null)
+    public function mount(DummyModelClass $dummyModelVariable)
     {
         $this->dummyModelVariable = $dummyModelVariable;
     }

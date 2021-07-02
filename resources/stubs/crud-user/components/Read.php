@@ -9,7 +9,7 @@ class Read extends Component
 {
     public $dummyModelVariable;
 
-    public function mount(DummyModelClass $dummyModelVariable = null)
+    public function mount(DummyModelClass $dummyModelVariable)
     {
         $this->dummyModelVariable = $dummyModelVariable;
     }
