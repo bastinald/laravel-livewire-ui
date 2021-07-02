@@ -54,6 +54,8 @@ class MakeUiCommand extends Command
 
     private function executeCommands()
     {
+        Artisan::call('migrate:auto', [], $this->getOutput());
+
         exec('npm install');
         exec('npm run dev');
     }
