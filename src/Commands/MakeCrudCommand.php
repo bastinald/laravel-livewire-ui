@@ -35,17 +35,8 @@ class MakeCrudCommand extends Command
             Str::singular(Arr::last(explode('\\', $this->componentParser->classNamespace()))),
         );
 
-        $this->componentDir = Str::replaceLast(
-            DIRECTORY_SEPARATOR . 'Index.php',
-            '',
-            $this->componentParser->relativeClassPath()
-        );
-
-        $this->viewDir = Str::replaceLast(
-            DIRECTORY_SEPARATOR . 'index.blade.php',
-            '',
-            $this->componentParser->relativeViewPath()
-        );
+        $this->componentDir = Str::replaceLast('/Index.php', '', $this->componentParser->relativeClassPath());
+        $this->viewDir = Str::replaceLast('/index.blade.php', '', $this->componentParser->relativeViewPath());
 
         if ($this->filesystem->exists($this->componentParser->classPath()) && !$this->option('force')) {
             $this->warn('CRUD exists: <info>' . $this->componentDir . '</info>');

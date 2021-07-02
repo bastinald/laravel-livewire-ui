@@ -28,7 +28,7 @@ class MakeAuthCommand extends Command
 
     private function makeStubs()
     {
-        $stubs = config('laravel-livewire-ui.stub_path') . DIRECTORY_SEPARATOR . 'auth';
+        $stubs = config('laravel-livewire-ui.stub_path') . '/auth';
 
         foreach ($this->filesystem->allFiles($stubs) as $stub) {
             $path = base_path($stub->getRelativePathname());

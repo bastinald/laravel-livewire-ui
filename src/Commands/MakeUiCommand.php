@@ -31,7 +31,7 @@ class MakeUiCommand extends Command
 
     private function makeStubs()
     {
-        $stubs = config('laravel-livewire-ui.stub_path') . DIRECTORY_SEPARATOR . 'ui';
+        $stubs = config('laravel-livewire-ui.stub_path') . '/ui';
 
         foreach ($this->filesystem->allFiles($stubs) as $stub) {
             $path = base_path($stub->getRelativePathname());
