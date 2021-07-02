@@ -76,7 +76,7 @@ class MakeCrudCommand extends Command
     private function makeStubs()
     {
         $stubDir = $this->modelParser->className() == 'User' ? 'crud-user' : 'crud';
-        $stubs = config('laravel-livewire-ui.stub_path') . DIRECTORY_SEPARATOR . $stubDir;
+        $stubs = config('laravel-livewire-ui.stub_path') . '/' . $stubDir;
 
         foreach ($this->filesystem->allFiles($stubs) as $stub) {
             $path = Str::replace(
