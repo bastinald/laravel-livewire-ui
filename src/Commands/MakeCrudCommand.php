@@ -35,8 +35,17 @@ class MakeCrudCommand extends Command
             Str::singular(Arr::last(explode('\\', $this->componentParser->classNamespace()))),
         );
 
-        $this->componentDir = Str::replaceLast('/Index.php', '', $this->componentParser->relativeClassPath());
-        $this->viewDir = Str::replaceLast('/index.blade.php', '', $this->componentParser->relativeViewPath());
+        $this->componentDir = Str::replaceLast(
+            DIRECTORY_SEPARATOR . 'Index.php',
+            '',
+            $this->componentParser->relativeClassPath()
+        );
+
+        $this->viewDir = Str::replaceLast(
+            DIRECTORY_SEPARATOR . 'index.blade.php',
+            '',
+            $this->componentParser->relativeViewPath()
+        );
 
         if ($this->filesystem->exists($this->componentParser->classPath()) && !$this->option('force')) {
             $this->warn('CRUD exists: <info>' . $this->componentDir . '</info>');
@@ -47,7 +56,7 @@ class MakeCrudCommand extends Command
 
         $this->setReplaces();
         $this->makeStubs();
-        $this->makeAModel();
+        $this->makeModel();
 
         $this->info('CRUD made successfully.');
         $this->info(url($this->replaces['dummy-route-uri']));
@@ -75,16 +84,21 @@ class MakeCrudCommand extends Command
 
     private function makeStubs()
     {
-        $dir = $this->modelParser->className() == 'User' ? 'crud-user' : 'crud';
+        $stubDir = $this->modelParser->className() == 'User' ? 'crud-user' : 'crud';
+        $stubs = config('laravel-livewire-ui.stub_path') . DIRECTORY_SEPARATOR . $stubDir;
 
-        foreach ($this->filesystem->allFiles(config('laravel-livewire-ui.stub_path') . '/' . $dir) as $stub) {
+        foreach ($this->filesystem->allFiles($stubs) as $stub) {
             $path = Str::replace(
                 ['components', 'views'],
                 [$this->componentDir, $this->viewDir],
                 $stub->getRelativePathname()
             );
+            $contents = Str::replace(
+                array_keys($this->replaces),
+                $this->replaces,
+                $this->filesystem->get($stub)
+            );
             $basePath = base_path($path);
-            $contents = Str::replace(array_keys($this->replaces), $this->replaces, $this->filesystem->get($stub));
 
             $this->filesystem->ensureDirectoryExists(dirname($basePath));
             $this->filesystem->put($basePath, $contents);
@@ -93,13 +107,14 @@ class MakeCrudCommand extends Command
         }
     }
 
-    private function makeAModel()
+    private function makeModel()
     {
         if (!$this->filesystem->exists($this->modelParser->classPath())) {
             Artisan::call('make:amodel', [
                 'class' => $this->modelParser->className(),
-                '--factory' => true,
             ], $this->getOutput());
+
+            Artisan::call('migrate:auto', [], $this->getOutput());
         }
     }
 }

@@ -24,12 +24,13 @@ class MakeAuthCommand extends Command
         $this->makeStubs();
 
         $this->info('Auth made successfully.');
-        $this->info(url('login'));
     }
 
     private function makeStubs()
     {
-        foreach ($this->filesystem->allFiles(config('laravel-livewire-ui.stub_path') . '/auth') as $stub) {
+        $stubs = config('laravel-livewire-ui.stub_path') . DIRECTORY_SEPARATOR . 'auth';
+
+        foreach ($this->filesystem->allFiles($stubs) as $stub) {
             $path = base_path($stub->getRelativePathname());
 
             $this->filesystem->ensureDirectoryExists(dirname($path));

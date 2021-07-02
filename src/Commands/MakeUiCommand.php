@@ -31,7 +31,9 @@ class MakeUiCommand extends Command
 
     private function makeStubs()
     {
-        foreach ($this->filesystem->allFiles(config('laravel-livewire-ui.stub_path') . '/ui') as $stub) {
+        $stubs = config('laravel-livewire-ui.stub_path') . DIRECTORY_SEPARATOR . 'ui';
+
+        foreach ($this->filesystem->allFiles($stubs) as $stub) {
             $path = base_path($stub->getRelativePathname());
 
             $this->filesystem->ensureDirectoryExists(dirname($path));
@@ -51,7 +53,6 @@ class MakeUiCommand extends Command
 
         Artisan::call('make:amodel', [
             'class' => 'User',
-            '--factory' => true,
             '--force' => true,
         ], $this->getOutput());
 
