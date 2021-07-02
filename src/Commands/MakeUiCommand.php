@@ -22,22 +22,11 @@ class MakeUiCommand extends Command
             return;
         }
 
-        if ($this->option('auth')) {
-            $this->makeAuth();
-        }
-
         $this->makeStubs();
         $this->executeCommands();
 
         $this->info('UI made successfully.');
         $this->info(config('app.url'));
-    }
-
-    private function makeAuth()
-    {
-        Artisan::call('make:auth', [
-            '--force' => $this->option('force'),
-        ], $this->getOutput());
     }
 
     private function makeStubs()
@@ -54,6 +43,12 @@ class MakeUiCommand extends Command
 
     private function executeCommands()
     {
+        if ($this->option('auth')) {
+            Artisan::call('make:auth', [
+                '--force' => $this->option('force'),
+            ], $this->getOutput());
+        }
+
         Artisan::call('make:amodel', [
             'class' => 'User',
             '--factory' => true,
