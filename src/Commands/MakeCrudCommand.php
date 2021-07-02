@@ -2,6 +2,7 @@
 
 namespace Bastinald\LaravelLivewireUi\Commands;
 
+use Faker\Core\File;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Arr;
@@ -74,8 +75,8 @@ class MakeCrudCommand extends Command
         $stubs = config('laravel-livewire-ui.stub_path') . '/' . $dir;
 
         foreach ($this->filesystem->allFiles($stubs) as $stub) {
-            $classDir = dirname($this->componentParser->relativeClassPath());
-            $viewDir = dirname($this->componentParser->relativeViewPath());
+            $classDir = Str::replace(base_path() . '/', '', dirname($this->componentParser->classPath()));
+            $viewDir = Str::replace(base_path() . '/', '', dirname($this->componentParser->viewPath()));
             $path = Str::replace(['components', 'views'], [$classDir, $viewDir], $stub->getRelativePathname());
             $contents = Str::replace(array_keys($this->replaces), $this->replaces, $this->filesystem->get($stub));
 
