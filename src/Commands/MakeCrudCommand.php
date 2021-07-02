@@ -15,8 +15,6 @@ class MakeCrudCommand extends Command
     private $filesystem;
     private $componentParser;
     private $modelParser;
-    private $componentDir;
-    private $viewDir;
     private $replaces;
 
     public function handle()
@@ -35,11 +33,8 @@ class MakeCrudCommand extends Command
             Str::singular(Arr::last(explode('\\', $this->componentParser->classNamespace()))),
         );
 
-        $this->componentDir = Str::replaceLast('/Index.php', '', $this->componentParser->relativeClassPath());
-        $this->viewDir = Str::replaceLast('/index.blade.php', '', $this->componentParser->relativeViewPath());
-
         if ($this->filesystem->exists($this->componentParser->classPath()) && !$this->option('force')) {
-            $this->warn('CRUD exists: <info>' . $this->componentDir . '</info>');
+            $this->warn('CRUD exists: <info>' . dirname($this->componentParser->relativeClassPath()) . '</info>');
             $this->warn('Use the <info>--force</info> to overwrite it.');
 
             return;
@@ -75,24 +70,17 @@ class MakeCrudCommand extends Command
 
     private function makeStubs()
     {
-        $stubDir = $this->modelParser->className() == 'User' ? 'crud-user' : 'crud';
-        $stubs = config('laravel-livewire-ui.stub_path') . '/' . $stubDir;
+        $dir = $this->modelParser->className() == 'User' ? 'crud-user' : 'crud';
+        $stubs = config('laravel-livewire-ui.stub_path') . '/' . $dir;
 
         foreach ($this->filesystem->allFiles($stubs) as $stub) {
-            $path = Str::replace(
-                ['components', 'views'],
-                [$this->componentDir, $this->viewDir],
-                $stub->getRelativePathname()
-            );
-            $contents = Str::replace(
-                array_keys($this->replaces),
-                $this->replaces,
-                $this->filesystem->get($stub)
-            );
-            $basePath = base_path($path);
+            $classDir = dirname($this->componentParser->relativeClassPath());
+            $viewDir = dirname($this->componentParser->relativeViewPath());
+            $path = Str::replace(['components', 'views'], [$classDir, $viewDir], $stub->getRelativePathname());
+            $contents = Str::replace(array_keys($this->replaces), $this->replaces, $this->filesystem->get($stub));
 
-            $this->filesystem->ensureDirectoryExists(dirname($basePath));
-            $this->filesystem->put($basePath, $contents);
+            $this->filesystem->ensureDirectoryExists(dirname(base_path($path)));
+            $this->filesystem->put(base_path($path), $contents);
 
             $this->warn('File created: <info>' . $path . '</info>');
         }
