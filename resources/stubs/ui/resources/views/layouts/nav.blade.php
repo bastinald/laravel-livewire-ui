@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <x-bs::link url="/" class="navbar-brand">
-            <x-bs::image asset="images/logo.png" :alt="config('app.name')" height="24"/>
+            <x-bs::image mix="images/logo.png" :alt="config('app.name')" height="24"/>
         </x-bs::link>
 
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">

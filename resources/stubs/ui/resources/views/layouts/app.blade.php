@@ -11,10 +11,10 @@
     </title>
 
     <livewire:styles/>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="icon" href="{{ asset('images/icon-fav.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/icon-touch.png') }}">
-    <link rel="manifest" href="{{ asset('json/manifest.json') }}">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="icon" href="{{ mix('images/icon-fav.png') }}">
+    <link rel="apple-touch-icon" href="{{ mix('images/icon-touch.png') }}">
+    <link rel="manifest" href="{{ mix('json/manifest.json') }}">
 </head>
 <body class="bg-light">
     <livewire:layouts.nav/>
@@ -26,6 +26,6 @@
     <livewire:loader/>
     <livewire:modals/>
     <livewire:scripts/>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

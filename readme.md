@@ -1,6 +1,6 @@
 # Laravel Livewire Ui
 
-This package provides Laravel Livewire & Bootstrap UI, Auth, & CRUD scaffolding commands to make your development speeds blazing fast. With it, you can generate full, preconfigured Bootstrap UI, complete Auth scaffolding including password resets and profile updating, and Create, Read, Update, and Delete operations. The CRUD files even have searching, sorting, and filtering.
+This package provides Laravel Livewire & Bootstrap UI, Auth, & CRUD scaffolding commands to make your development speeds blazing fast. With it, you can generate full, preconfigured Bootstrap UI, complete Auth scaffolding including password resets and profile updating, and Create, Read, Update, and Delete operations. The CRUD files even have searching, sorting, and filtering. This package also comes with full PWA capabilities.
 
 ## Documentation
 
@@ -31,6 +31,22 @@ The following packages are used by this package, so you may want to become famil
 - [Honey](https://github.com/lukeraymonddowning/honey)
 
 ## Installation
+
+This package was designed to work with new Laravel projects.
+
+Make a Laravel project via Valet, Docker, or whatever you prefer:
+
+```console
+laravel new my-project
+```
+
+Configure your `.env` APP, DB, and MAIL values:
+
+```env
+APP_*
+DB_*
+MAIL_*
+```
 
 Require the package via composer:
 
