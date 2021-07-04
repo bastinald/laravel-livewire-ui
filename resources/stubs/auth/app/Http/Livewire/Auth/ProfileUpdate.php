@@ -23,7 +23,7 @@ class ProfileUpdate extends Component
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'max:255'],
             'email' => ['required', 'email', Rule::unique('users')->ignore(Auth::user()->id)],
         ];
     }

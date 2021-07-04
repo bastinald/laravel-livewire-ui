@@ -24,7 +24,7 @@ class Save extends Component
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'max:255'],
         ];
     }
 

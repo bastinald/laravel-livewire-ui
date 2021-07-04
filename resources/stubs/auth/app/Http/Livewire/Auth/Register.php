@@ -31,7 +31,7 @@ class Register extends Component
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'max:255'],
             'email' => ['required', 'email', Rule::unique('users')],
             'password' => ['required', 'confirmed'],
         ];

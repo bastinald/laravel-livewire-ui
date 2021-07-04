@@ -25,7 +25,7 @@ class Save extends Component
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'max:255'],
             'email' => ['required', 'email', Rule::unique('dummy_model_table')->ignore($this->dummyModelVariable->id)],
             'password' => [!$this->dummyModelVariable->exists ? 'required' : 'nullable', 'confirmed'],
         ];
