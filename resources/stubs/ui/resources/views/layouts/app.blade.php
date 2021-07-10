@@ -16,9 +16,7 @@
 <body class="bg-light">
     <livewire:layouts.nav/>
 
-    <div class="container my-3">
-        {{ $slot }}
-    </div>
+    {{ $slot }}
 
     <livewire:loader/>
     <livewire:modals/>
