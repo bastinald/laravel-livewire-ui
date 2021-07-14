@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class PasswordForgot extends Component
 {
-    public $email, $status;
+    public $email;
 
     public function route()
     {
@@ -37,11 +37,10 @@ class PasswordForgot extends Component
 
         if ($status != Password::RESET_LINK_SENT) {
             $this->addError('email', __($status));
-            $this->reset('status');
 
             return;
         }
 
-        $this->status = $status;
+        $this->emit('showToast', 'success', __($status));
     }
 }

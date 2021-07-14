@@ -20,6 +20,7 @@
 
     <livewire:loader/>
     <livewire:modals/>
+    <livewire:toasts/>
     <livewire:scripts/>
     <script src="{{ mix('js/app.js') }}"></script>
 </body>

@@ -6,7 +6,7 @@
     </h1>
 
     <div class="row justify-content-between">
-        <div class="col-lg-auto mb-3">
+        <div class="col-lg-4 mb-3">
             <x-bs::input icon="search" :placeholder="__('Search')" type="search" wire:model.debounce.500ms="search"/>
         </div>
         <div class="col-lg-auto d-flex gap-2 mb-3">

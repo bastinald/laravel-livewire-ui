@@ -7,10 +7,6 @@
                 @yield('title')
             </h5>
             <div class="card-body d-grid gap-3">
-                @if($status)
-                    <x-bs::alert icon="check-circle" :label="__($status)"/>
-                @endif
-
                 <x-bs::input :label="__('Email')" type="email" wire:model.defer="email"/>
             </div>
             <div class="card-footer d-flex justify-content-end">

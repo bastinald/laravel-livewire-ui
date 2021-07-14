@@ -16,6 +16,7 @@
         "bastinald/laravel-livewire-loader": "^2.0",
         "bastinald/laravel-livewire-modals": "^2.0",
         "bastinald/laravel-livewire-routes": "^2.0",
+        "bastinald/laravel-livewire-toasts": "^2.0",
         "jamesmills/laravel-timezone": "^1.9",
         "laravel/framework": "^8.0",
         "lukeraymonddowning/honey": "^0.3"
