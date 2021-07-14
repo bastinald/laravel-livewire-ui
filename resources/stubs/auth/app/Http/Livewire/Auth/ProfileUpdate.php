@@ -34,7 +34,7 @@ class ProfileUpdate extends Component
 
         Auth::user()->update($validated);
 
-        $this->emit('showToast', 'success', __('Profile Updated!'));
+        $this->emit('showToast', 'success', __('Profile updated!'));
         $this->emit('hideModal');
         $this->emit('$refresh');
     }

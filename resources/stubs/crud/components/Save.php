@@ -34,7 +34,7 @@ class Save extends Component
 
         $this->dummyModelVariable->fill($validated)->save();
 
-        $this->emit('showToast', 'success', __('Dummy Model Title Saved!'));
+        $this->emit('showToast', 'success', __('Dummy Model Title saved!'));
         $this->emit('hideModal');
         $this->emit('$refresh');
     }

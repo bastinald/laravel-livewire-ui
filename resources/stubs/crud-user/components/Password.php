@@ -32,7 +32,7 @@ class Password extends Component
 
         $this->dummyModelVariable->update($this->only(['password']));
 
-        $this->emit('showToast', 'success', __('Dummy Model Title Password Changed!'));
+        $this->emit('showToast', 'success', __('Dummy Model Title password changed!'));
         $this->emit('hideModal');
     }
 }
