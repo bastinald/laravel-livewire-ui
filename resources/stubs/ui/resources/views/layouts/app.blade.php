@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,10 +13,14 @@
     <link rel="apple-touch-icon" href="{{ mix('images/icon-touch.png') }}">
     <link rel="manifest" href="{{ mix('json/manifest.json') }}">
 </head>
-<body class="bg-light">
+<body class="d-flex flex-column bg-light h-100">
     <livewire:layouts.nav/>
 
-    {{ $slot }}
+    <main class="flex-shrink-0">
+        {{ $slot }}
+    </main>
+
+    <livewire:layouts.footer/>
 
     <livewire:loader/>
     <livewire:modals/>

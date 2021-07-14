@@ -28,7 +28,7 @@ class PasswordChange extends Component
 
         Auth::user()->update($this->only(['password']));
 
-        $this->emit('showToast', 'success', __('Password changed!'));
+        $this->emit('showToast', 'success', __('Password saved!'));
         $this->emit('hideModal');
     }
 }
