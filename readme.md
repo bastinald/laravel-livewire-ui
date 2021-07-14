@@ -29,6 +29,7 @@ The following packages are used by this package, so you may want to become famil
 - [Laravel Livewire Loader](https://github.com/bastinald/laravel-livewire-loader)
 - [Laravel Livewire Modals](https://github.com/bastinald/laravel-livewire-modals)
 - [Laravel Livewire Routes](https://github.com/bastinald/laravel-livewire-routes)
+- [Laravel Livewire Toasts](https://github.com/bastinald/laravel-livewire-toasts)
 - [Laravel Timezone](https://github.com/jamesmills/laravel-timezone)
 - [Honey](https://github.com/lukeraymonddowning/honey)
 
