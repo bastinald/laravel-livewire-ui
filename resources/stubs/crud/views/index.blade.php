@@ -31,10 +31,10 @@
             <div class="list-group-item list-group-item-action">
                 <div class="row align-items-center">
                     <div class="col-lg mb-3 mb-lg-0">
-                        <ul class="list-unstyled mb-0">
-                            <li>{{ $dummyModelVariable->name }}</li>
-                            <li class="small text-muted">@displayDate($dummyModelVariable->created_at)</li>
-                        </ul>
+                        <x-bs::link :label="$dummyModelVariable->name"
+                            wire:click.prevent="$emit('showModal', 'dummy.prefix.read', {{ $dummyModelVariable->id }})"/>
+
+                        <div class="small text-muted">@displayDate($dummyModelVariable->created_at)</div>
                     </div>
                     <div class="col-lg-auto d-flex gap-2">
                         <x-bs::button icon="eye" :title="__('Read')" color="outline-primary" size="sm"
