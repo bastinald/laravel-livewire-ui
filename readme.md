@@ -121,6 +121,14 @@ php artisan make:crud Admin/Users --model=Admin/User
 
 This is handy if you want the model in a subdirectory, or if the name is completely different from the CRUD path.
 
+### Clearing the Log
+
+Delete the `laravel.log` file:
+
+```console
+php artisan log:clear
+```
+
 ## Publishing Stubs
 
 Use your own Auth & CRUD stubs by publishing package files:

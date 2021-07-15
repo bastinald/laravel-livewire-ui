@@ -2,6 +2,7 @@
 
 namespace Bastinald\LaravelLivewireUi\Providers;
 
+use Bastinald\LaravelLivewireUi\Commands\LogClearCommand;
 use Bastinald\LaravelLivewireUi\Commands\MakeAuthCommand;
 use Bastinald\LaravelLivewireUi\Commands\MakeCrudCommand;
 use Bastinald\LaravelLivewireUi\Commands\MakeUiCommand;
@@ -13,6 +14,7 @@ class LaravelLivewireUiProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
+                LogClearCommand::class,
                 MakeAuthCommand::class,
                 MakeCrudCommand::class,
                 MakeUiCommand::class,
