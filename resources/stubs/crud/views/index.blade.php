@@ -10,7 +10,7 @@
             <x-bs::input icon="search" :placeholder="__('Search')" type="search" wire:model.debounce.500ms="search"/>
         </div>
         <div class="col-lg-auto d-flex gap-2 mb-3">
-            <x-bs::button icon="plus" :label="__('Create')" wire:click="$emit('showModal', 'dummy.prefix.save')"/>
+            <x-bs::button icon="plus" wire:click="$emit('showModal', 'dummy.prefix.save')"/>
 
             <x-bs::dropdown icon="sort" :label="__($sort)">
                 @foreach($sorts as $sort)
