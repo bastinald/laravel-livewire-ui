@@ -31,6 +31,10 @@ $form-label-margin-bottom: 0.25rem;
 $input-group-addon-bg: $white;
 $link-decoration: none;
 
+* {
+    outline: none !important;
+}
+
 .container {
     max-width: $container-max-width !important;
 }
