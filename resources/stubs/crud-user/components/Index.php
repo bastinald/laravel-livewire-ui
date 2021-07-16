@@ -40,7 +40,7 @@ class Index extends Component
 
         if ($this->search) {
             $query->where(function (Builder $query) {
-                $query->orWhere('id', 'like', '%' . $this->search . '%');
+                $query->where('id', 'like', '%' . $this->search . '%');
                 $query->orWhere('name', 'like', '%' . $this->search . '%');
                 $query->orWhere('email', 'like', '%' . $this->search . '%');
             });
