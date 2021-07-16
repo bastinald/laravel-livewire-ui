@@ -34,7 +34,7 @@
                         <x-bs::link :label="$dummyModelVariable->name"
                             wire:click.prevent="$emit('showModal', 'dummy.prefix.read', {{ $dummyModelVariable->id }})"/>
 
-                        <div class="small text-muted">@displayDate($dummyModelVariable->created_at)</div>
+                        <p class="small text-muted mb-0">@displayDate($dummyModelVariable->created_at)</p>
                     </div>
                     <div class="col-lg-auto d-flex gap-2">
                         <x-bs::button icon="eye" :title="__('Read')" color="outline-primary" size="sm"
