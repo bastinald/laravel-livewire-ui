@@ -67,5 +67,7 @@ class Index extends Component
     public function delete(DummyModelClass $dummyModelVariable)
     {
         $dummyModelVariable->delete();
+
+        $this->emit('showToast', 'success', __('Dummy Model Title deleted!'));
     }
 }
