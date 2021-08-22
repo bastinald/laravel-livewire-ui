@@ -10,8 +10,8 @@ $border-radius-sm: $border-radius;
 $card-cap-bg: $white;
 $card-cap-padding-y: 1rem;
 
-$enable-negative-margins: true;
-$enable-validation-icons: false;
+$dl-margin-bottom: -1rem;
+$dd-margin-bottom: 1rem;
 
 $font-family-sans-serif: 'Poppins', sans-serif;
 $font-size-base: 0.9rem;
@@ -26,7 +26,6 @@ $navbar-dark-toggler-border-color: transparent;
 $navbar-light-toggler-border-color: transparent;
 
 $container-max-width: 960px;
-$dd-margin-bottom: 1rem;
 $form-label-margin-bottom: 0.25rem;
 $input-group-addon-bg: $white;
 $link-decoration: none;
@@ -39,6 +38,9 @@ $link-decoration: none;
     max-width: $container-max-width !important;
 }
 
+dl {
+    margin-bottom: $dl-margin-bottom !important;
+}
 dd {
     margin-bottom: $dd-margin-bottom !important;
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Auth;
 
 use App\Providers\RouteServiceProvider;
+use Bastinald\LaravelBootstrapComponents\Traits\WithModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
@@ -11,11 +12,11 @@ use Livewire\Component;
 
 class Login extends Component
 {
-    public $email, $password, $remember;
+    use WithModel;
 
     public function route()
     {
-        return Route::get('login', static::class)
+        return Route::get('login')
             ->name('login')
             ->middleware('guest');
     }
@@ -35,9 +36,10 @@ class Login extends Component
 
     public function login()
     {
-        $this->validate();
+        $this->validateModel();
 
-        $throttleKey = Str::lower($this->email) . '|' . request()->ip();
+        $throttleKey = Str::lower($this->model()->get('email')) . '|' . request()->ip();
+        $credentials = $this->model()->only(['email', 'password'])->toArray();
 
         if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
             $this->addError('email', __('auth.throttle', [
@@ -47,7 +49,7 @@ class Login extends Component
             return;
         }
 
-        if (!Auth::attempt($this->only(['email', 'password']), $this->remember)) {
+        if (!Auth::attempt($credentials, $this->model()->get('remember'))) {
             RateLimiter::hit($throttleKey);
 
             $this->addError('email', __('auth.failed'));

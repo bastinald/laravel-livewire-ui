@@ -2,12 +2,15 @@
 
 namespace DummyComponentNamespace;
 
+use Bastinald\LaravelBootstrapComponents\Traits\WithModel;
 use DummyModelNamespace\DummyModelClass;
 use Livewire\Component;
 
 class Password extends Component
 {
-    public $dummyModelVariable, $password, $password_confirmation;
+    use WithModel;
+
+    public $dummyModelVariable;
 
     public function mount(DummyModelClass $dummyModelVariable)
     {
@@ -28,9 +31,9 @@ class Password extends Component
 
     public function save()
     {
-        $this->validate();
+        $this->validateModel();
 
-        $this->dummyModelVariable->update($this->only(['password']));
+        $this->dummyModelVariable->update($this->model()->only('password')->toArray());
 
         $this->emit('showToast', 'success', __('Dummy Model Title password saved!'));
         $this->emit('hideModal');

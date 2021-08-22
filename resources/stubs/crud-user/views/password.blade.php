@@ -1,5 +1,5 @@
 <div class="modal-dialog">
-    <form class="modal-content" wire:submit.prevent="save">
+    <x-bs::form class="modal-content" submit="save">
         <div class="modal-header">
             <h5 class="modal-title">
                 {{ __('Change Dummy Model Title Password') }}
@@ -7,12 +7,12 @@
             <x-bs::close dismiss="modal"/>
         </div>
         <div class="modal-body d-grid gap-3">
-            <x-bs::input :label="__('New Password')" type="password" wire:model.defer="password"/>
-            <x-bs::input :label="__('Confirm New Password')" type="password" wire:model.defer="password_confirmation"/>
+            <x-bs::input :label="__('New Password')" type="password" model="password"/>
+            <x-bs::input :label="__('Confirm New Password')" type="password" model="password_confirmation"/>
         </div>
         <div class="modal-footer">
             <x-bs::button :label="__('Cancel')" color="light" dismiss="modal"/>
             <x-bs::button :label="__('Save Password')" type="submit"/>
         </div>
-    </form>
+    </x-bs::form>
 </div>

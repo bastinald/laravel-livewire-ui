@@ -36,7 +36,7 @@ class MakeAuthCommand extends Command
             $this->filesystem->ensureDirectoryExists(dirname($path));
             $this->filesystem->put($path, $this->filesystem->get($stub));
 
-            $this->warn('File created: <info>' . $stub->getRelativePathname() . '</info>');
+            $this->line('<info>File created:</info> ' . $stub->getRelativePathname());
         }
     }
 }

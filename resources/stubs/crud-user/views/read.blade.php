@@ -7,7 +7,7 @@
             <x-bs::close dismiss="modal"/>
         </div>
         <div class="modal-body">
-            <dl class="mb-n3">
+            <dl>
                 <dt>{{ __('ID') }}</dt>
                 <dd>{{ $dummyModelVariable->id }}</dd>
 

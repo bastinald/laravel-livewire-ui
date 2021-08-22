@@ -9,7 +9,7 @@ class Home extends Component
 {
     public function route()
     {
-        return Route::get('home', static::class)
+        return Route::get('home')
             ->middleware('auth');
     }
 

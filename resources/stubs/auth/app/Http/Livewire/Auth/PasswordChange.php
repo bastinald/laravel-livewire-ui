@@ -2,12 +2,13 @@
 
 namespace App\Http\Livewire\Auth;
 
+use Bastinald\LaravelBootstrapComponents\Traits\WithModel;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class PasswordChange extends Component
 {
-    public $current_password, $password, $password_confirmation;
+    use WithModel;
 
     public function render()
     {
@@ -24,9 +25,9 @@ class PasswordChange extends Component
 
     public function save()
     {
-        $this->validate();
+        $this->validateModel();
 
-        Auth::user()->update($this->only(['password']));
+        Auth::user()->update($this->model()->only('password')->toArray());
 
         $this->emit('showToast', 'success', __('Password saved!'));
         $this->emit('hideModal');

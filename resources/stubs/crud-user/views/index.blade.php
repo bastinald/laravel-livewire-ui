@@ -7,20 +7,20 @@
 
     <div class="row justify-content-between">
         <div class="col-lg-4 mb-3">
-            <x-bs::input icon="search" :placeholder="__('Search')" type="search" wire:model.debounce.500ms="search"/>
+            <x-bs::input icon="search" :placeholder="__('Search')" type="search" model="search" debounce="500"/>
         </div>
         <div class="col-lg-auto d-flex gap-2 mb-3">
-            <x-bs::button icon="plus" :title="__('Create')" wire:click="$emit('showModal', 'dummy.prefix.save')"/>
+            <x-bs::button icon="plus" :title="__('Create')" click="$emit('showModal', 'dummy.prefix.save')"/>
 
             <x-bs::dropdown icon="sort" :label="__($sort)">
                 @foreach($sorts as $sort)
-                    <x-bs::dropdown-item :label="__($sort)" wire:click="$set('sort', '{{ $sort }}')"/>
+                    <x-bs::dropdown-item :label="__($sort)" click="$set('sort', '{{ $sort }}')"/>
                 @endforeach
             </x-bs::dropdown>
 
             <x-bs::dropdown icon="filter" :label="__($filter)">
                 @foreach($filters as $filter)
-                    <x-bs::dropdown-item :label="__($filter)" wire:click="$set('filter', '{{ $filter }}')"/>
+                    <x-bs::dropdown-item :label="__($filter)" click="$set('filter', '{{ $filter }}')"/>
                 @endforeach
             </x-bs::dropdown>
         </div>
@@ -32,22 +32,22 @@
                 <div class="row align-items-center">
                     <div class="col-lg mb-3 mb-lg-0">
                         <x-bs::link :label="$dummyModelVariable->name"
-                            wire:click.prevent="$emit('showModal', 'dummy.prefix.read', {{ $dummyModelVariable->id }})"/>
+                            click="$emit('showModal', 'dummy.prefix.read', {{ $dummyModelVariable->id }})"/>
 
                         <p class="small text-muted mb-0">@displayDate($dummyModelVariable->created_at)</p>
                     </div>
                     <div class="col-lg-auto d-flex gap-2">
                         <x-bs::button icon="eye" :title="__('Read')" color="outline-primary" size="sm"
-                            wire:click="$emit('showModal', 'dummy.prefix.read', {{ $dummyModelVariable->id }})"/>
+                            click="$emit('showModal', 'dummy.prefix.read', {{ $dummyModelVariable->id }})"/>
 
                         <x-bs::button icon="pencil-alt" :title="__('Update')" color="outline-primary" size="sm"
-                            wire:click="$emit('showModal', 'dummy.prefix.save', {{ $dummyModelVariable->id }})"/>
+                            click="$emit('showModal', 'dummy.prefix.save', {{ $dummyModelVariable->id }})"/>
 
                         <x-bs::button icon="unlock-alt" :title="__('Password')" color="outline-primary" size="sm"
-                            wire:click="$emit('showModal', 'dummy.prefix.password', {{ $dummyModelVariable->id }})"/>
+                            click="$emit('showModal', 'dummy.prefix.password', {{ $dummyModelVariable->id }})"/>
 
                         <x-bs::button icon="trash-alt" :title="__('Delete')" color="outline-primary" size="sm"
-                            wire:click="delete({{ $dummyModelVariable->id }})" confirm/>
+                            click="delete({{ $dummyModelVariable->id }})" confirm/>
                     </div>
                 </div>
             </div>

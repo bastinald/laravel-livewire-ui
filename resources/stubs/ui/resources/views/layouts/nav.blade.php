@@ -17,13 +17,12 @@
                     @else
                         <x-bs::nav-dropdown icon="user-circle" :label="Auth::user()->name">
                             <x-bs::dropdown-item :label="__('Update Profile')"
-                                wire:click="$emit('showModal', 'auth.profile-update')"/>
+                                click="$emit('showModal', 'auth.profile-update')"/>
 
                             <x-bs::dropdown-item :label="__('Change Password')"
-                                wire:click="$emit('showModal', 'auth.password-change')"/>
+                                click="$emit('showModal', 'auth.password-change')"/>
 
-                            <x-bs::dropdown-item :label="__('Logout')"
-                                wire:click="logout"/>
+                            <x-bs::dropdown-item :label="__('Logout')" click="logout"/>
                         </x-bs::nav-dropdown>
                     @endguest
                 @endif

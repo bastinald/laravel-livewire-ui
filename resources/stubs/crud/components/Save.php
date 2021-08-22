@@ -2,18 +2,21 @@
 
 namespace DummyComponentNamespace;
 
+use Bastinald\LaravelBootstrapComponents\Traits\WithModel;
 use DummyModelNamespace\DummyModelClass;
 use Livewire\Component;
 
 class Save extends Component
 {
-    public $dummyModelVariable, $name;
+    use WithModel;
+
+    public $dummyModelVariable;
 
     public function mount(DummyModelClass $dummyModelVariable = null)
     {
         $this->dummyModelVariable = $dummyModelVariable;
 
-        $this->fill($dummyModelVariable->toArray());
+        $this->setModel($dummyModelVariable);
     }
 
     public function render()
@@ -30,9 +33,9 @@ class Save extends Component
 
     public function save()
     {
-        $validated = $this->validate();
+        $this->validateModel();
 
-        $this->dummyModelVariable->fill($validated)->save();
+        $this->dummyModelVariable->fill($this->model()->toArray())->save();
 
         $this->emit('showToast', 'success', __('Dummy Model Title saved!'));
         $this->emit('hideModal');

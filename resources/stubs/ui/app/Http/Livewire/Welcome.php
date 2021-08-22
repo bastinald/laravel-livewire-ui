@@ -9,7 +9,7 @@ class Welcome extends Component
 {
     public function route()
     {
-        return Route::get('/', static::class);
+        return Route::get('/');
     }
 
     public function render()

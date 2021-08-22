@@ -34,7 +34,7 @@ class MakeCrudCommand extends Command
         );
 
         if ($this->filesystem->exists($this->componentParser->classPath()) && !$this->option('force')) {
-            $this->warn('CRUD exists: <info>' . dirname($this->componentParser->relativeClassPath()) . '</info>');
+            $this->line('<comment>CRUD exists:</comment> ' . dirname($this->componentParser->relativeClassPath()));
             $this->warn('Use the <info>--force</info> to overwrite it.');
 
             return;
@@ -45,7 +45,7 @@ class MakeCrudCommand extends Command
         $this->makeModel();
 
         $this->info('CRUD made successfully.');
-        $this->info(url($this->replaces['dummy-route-uri']));
+        $this->line(url($this->replaces['dummy-route-uri']));
     }
 
     private function setReplaces()
@@ -82,7 +82,7 @@ class MakeCrudCommand extends Command
             $this->filesystem->ensureDirectoryExists(dirname(base_path($path)));
             $this->filesystem->put(base_path($path), $contents);
 
-            $this->warn('File created: <info>' . $path . '</info>');
+            $this->line('<info>File created:</info> ' . $path);
         }
     }
 

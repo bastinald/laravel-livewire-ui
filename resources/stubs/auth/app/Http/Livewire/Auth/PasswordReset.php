@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Auth;
 
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Bastinald\LaravelBootstrapComponents\Traits\WithModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
@@ -11,19 +12,21 @@ use Livewire\Component;
 
 class PasswordReset extends Component
 {
-    public $token, $email, $password, $password_confirmation;
+    use WithModel;
 
     public function route()
     {
-        return Route::get('password-reset/{token}/{email}', static::class)
+        return Route::get('password-reset/{token}/{email}')
             ->name('password.reset')
             ->middleware('guest');
     }
 
     public function mount($token, $email)
     {
-        $this->token = $token;
-        $this->email = $email;
+        $this->setModel([
+            'token' => $token,
+            'email' => $email,
+        ]);
     }
 
     public function render()
@@ -41,16 +44,13 @@ class PasswordReset extends Component
 
     public function save()
     {
-        $this->validate();
+        $this->validateModel();
 
-        $status = Password::reset(
-            $this->only(['token', 'email', 'password', 'password_confirmation']),
-            function (User $user) {
-                $user->update($this->only(['password']));
+        $status = Password::reset($this->model, function (User $user) {
+            $user->update($this->model()->only('password')->toArray());
 
-                Auth::login($user, true);
-            }
-        );
+            Auth::login($user, true);
+        });
 
         if ($status != Password::PASSWORD_RESET) {
             $this->addError('email', __($status));

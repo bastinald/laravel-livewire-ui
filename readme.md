@@ -17,7 +17,7 @@ This package provides Laravel Livewire & Bootstrap UI, Auth, & CRUD scaffolding 
 
 ## Requirements
 
-- a server with Laravel 8 support
+- A server with Laravel 8 support
 - NPM installed on the dev machine
 
 ## Packages Used

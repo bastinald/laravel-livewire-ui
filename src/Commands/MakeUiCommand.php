@@ -26,7 +26,7 @@ class MakeUiCommand extends Command
         $this->executeCommands();
 
         $this->info('UI made successfully.');
-        $this->info(config('app.url'));
+        $this->line(config('app.url'));
     }
 
     private function makeStubs()
@@ -39,7 +39,7 @@ class MakeUiCommand extends Command
             $this->filesystem->ensureDirectoryExists(dirname($path));
             $this->filesystem->put($path, $this->filesystem->get($stub));
 
-            $this->warn('File created: <info>' . $stub->getRelativePathname() . '</info>');
+            $this->line('<info>File created:</info> ' . $stub->getRelativePathname());
         }
     }
 
