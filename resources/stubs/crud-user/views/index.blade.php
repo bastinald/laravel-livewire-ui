@@ -12,13 +12,13 @@
         <div class="col-lg-auto d-flex gap-2 mb-3">
             <x-bs::button icon="plus" :title="__('Create')" click="$emit('showModal', 'dummy.prefix.save')"/>
 
-            <x-bs::dropdown icon="sort" :label="__($sort)">
+            <x-bs::dropdown icon="sort" :label="__($sort)" :title="__('Sort')">
                 @foreach($sorts as $sort)
                     <x-bs::dropdown-item :label="__($sort)" click="$set('sort', '{{ $sort }}')"/>
                 @endforeach
             </x-bs::dropdown>
 
-            <x-bs::dropdown icon="filter" :label="__($filter)">
+            <x-bs::dropdown icon="filter" :label="__($filter)" :title="__('Filter')">
                 @foreach($filters as $filter)
                     <x-bs::dropdown-item :label="__($filter)" click="$set('filter', '{{ $filter }}')"/>
                 @endforeach
