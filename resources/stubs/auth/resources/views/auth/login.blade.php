@@ -12,7 +12,10 @@
 
                 <div class="d-flex justify-content-between">
                     <x-bs::check :checkLabel="__('Remember me')" model="remember"/>
-                    <x-bs::link :label="__('Forgot password?')" route="password.forgot"/>
+
+                    @if(Route::has('password.forgot'))
+                        <x-bs::link :label="__('Forgot password?')" route="password.forgot"/>
+                    @endif
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-end">

@@ -7,7 +7,6 @@
                 <x-bs::link :label="config('app.name')" url="/"/>
             </div>
             {{--<div class="col-auto d-flex gap-3">--}}
-            {{--    <x-bs::link :label="__('Contact')" href="#"/>--}}
             {{--    <x-bs::link :label="__('Terms')" href="#"/>--}}
             {{--    <x-bs::link :label="__('Privacy')" href="#"/>--}}
             {{--</div>--}}

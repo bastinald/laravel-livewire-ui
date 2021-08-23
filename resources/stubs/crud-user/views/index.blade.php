@@ -6,7 +6,7 @@
     </h1>
 
     <div class="row justify-content-between">
-        <div class="col-lg-4 mb-3">
+        <div class="col-lg-auto mb-3">
             <x-bs::input icon="search" :placeholder="__('Search')" type="search" model="search" debounce="500"/>
         </div>
         <div class="col-lg-auto d-flex gap-2 mb-3">
@@ -36,17 +36,17 @@
 
                         <p class="small text-muted mb-0">@displayDate($dummyModelVariable->created_at)</p>
                     </div>
-                    <div class="col-lg-auto d-flex gap-2">
-                        <x-bs::button icon="eye" :title="__('Read')" color="outline-primary" size="sm"
+                    <div class="col-lg-auto d-flex gap-3">
+                        <x-bs::button icon="eye" :title="__('Read')" color="link"
                             click="$emit('showModal', 'dummy.prefix.read', {{ $dummyModelVariable->id }})"/>
 
-                        <x-bs::button icon="pencil-alt" :title="__('Update')" color="outline-primary" size="sm"
+                        <x-bs::button icon="pencil-alt" :title="__('Update')" color="link"
                             click="$emit('showModal', 'dummy.prefix.save', {{ $dummyModelVariable->id }})"/>
 
-                        <x-bs::button icon="unlock-alt" :title="__('Password')" color="outline-primary" size="sm"
+                        <x-bs::button icon="unlock-alt" :title="__('Password')" color="link"
                             click="$emit('showModal', 'dummy.prefix.password', {{ $dummyModelVariable->id }})"/>
 
-                        <x-bs::button icon="trash-alt" :title="__('Delete')" color="outline-primary" size="sm"
+                        <x-bs::button icon="trash-alt" :title="__('Delete')" color="link"
                             click="delete({{ $dummyModelVariable->id }})" confirm/>
                     </div>
                 </div>
