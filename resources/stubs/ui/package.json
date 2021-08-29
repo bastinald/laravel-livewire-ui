@@ -10,7 +10,6 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "@fontsource/poppins": "^4.4.5",
         "@fortawesome/fontawesome-free": "^5.15.3",
         "@popperjs/core": "^2.9.2",
         "axios": "^0.21",

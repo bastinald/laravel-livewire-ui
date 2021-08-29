@@ -6,32 +6,17 @@
             </h5>
             <x-bs::close dismiss="modal"/>
         </div>
-        <div class="modal-body">
-            <dl>
-                <dt>{{ __('ID') }}</dt>
-                <dd>{{ $dummyModelVariable->id }}</dd>
-
-                <dt>{{ __('Name') }}</dt>
-                <dd>{{ $dummyModelVariable->name }}</dd>
-
-                <dt>{{ __('Email') }}</dt>
-                <dd>{{ $dummyModelVariable->email }}</dd>
-
-                <dt>{{ __('Timezone') }}</dt>
-                <dd>{{ $dummyModelVariable->timezone ?? __('Empty') }}</dd>
-
-                <dt>{{ __('Email Verified At') }}</dt>
-                <dd>@displayDate($dummyModelVariable->email_verified_at)</dd>
-
-                <dt>{{ __('Created At') }}</dt>
-                <dd>@displayDate($dummyModelVariable->created_at)</dd>
-
-                <dt>{{ __('Updated At') }}</dt>
-                <dd>@displayDate($dummyModelVariable->updated_at)</dd>
-            </dl>
+        <div class="modal-body d-grid gap-3">
+            <x-bs::desc :term="__('ID')" :details="$dummyModelVariable->id"/>
+            <x-bs::desc :term="__('Name')" :details="$dummyModelVariable->name"/>
+            <x-bs::desc :term="__('Email')" :details="$dummyModelVariable->email"/>
+            <x-bs::desc :term="__('Timezone')" :details="$dummyModelVariable->timezone"/>
+            <x-bs::desc :term="__('Email Verified At')" :date="$dummyModelVariable->email_verified_at"/>
+            <x-bs::desc :term="__('Created At')" :date="$dummyModelVariable->created_at"/>
+            <x-bs::desc :term="__('Updated At')" :date="$dummyModelVariable->updated_at"/>
         </div>
         <div class="modal-footer">
-            <x-bs::button :label="__('Close')" color="light" dismiss="modal"/>
+            <x-bs::button :label="__('Close')" color="secondary" dismiss="modal"/>
         </div>
     </div>
 </div>

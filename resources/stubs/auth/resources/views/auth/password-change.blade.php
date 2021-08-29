@@ -12,7 +12,7 @@
             <x-bs::input :label="__('Confirm New Password')" type="password" model="password_confirmation"/>
         </div>
         <div class="modal-footer">
-            <x-bs::button :label="__('Cancel')" color="light" dismiss="modal"/>
+            <x-bs::button :label="__('Cancel')" color="secondary" dismiss="modal"/>
             <x-bs::button :label="__('Save Password')" type="submit"/>
         </div>
     </x-bs::form>

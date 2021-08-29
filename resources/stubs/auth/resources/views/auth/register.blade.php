@@ -7,7 +7,7 @@
                 @yield('title')
             </h5>
             <div class="card-body d-grid gap-3">
-                <x-bs::input :label="__('Name')" model="name"/>
+                <x-bs::input :label="__('Name')" type="text" model="name"/>
                 <x-bs::input :label="__('Email')" type="email" model="email"/>
                 <x-bs::input :label="__('Password')" type="password" model="password"/>
                 <x-bs::input :label="__('Confirm Password')" type="password" model="password_confirmation"/>

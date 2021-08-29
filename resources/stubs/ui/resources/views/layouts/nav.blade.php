@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <x-bs::link url="/" class="navbar-brand d-flex">
             <x-bs::image mix="images/logo.png" :alt="config('app.name')" height="24"/>
@@ -19,8 +19,7 @@
                         <x-bs::nav-link :label="__('Register')" route="register"/>
                     @endif
                 @else
-                    <x-bs::nav-link :label="__('Home')" url="home"/>
-                    {{--<x-bs::nav-link :label="__('Users')" route="users"/>--}}
+                    {{--<x-bs::nav-link icon="users" :label="__('Users')" route="users"/>--}}
 
                     <x-bs::nav-dropdown icon="user-circle" :label="Auth::user()->name">
                         <x-bs::dropdown-item :label="__('Update Profile')"

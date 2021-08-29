@@ -7,11 +7,11 @@
             <x-bs::close dismiss="modal"/>
         </div>
         <div class="modal-body d-grid gap-3">
-            <x-bs::input :label="__('Name')" model="name"/>
+            <x-bs::input :label="__('Name')" type="text" model="name"/>
             <x-bs::input :label="__('Email')" type="email" model="email"/>
         </div>
         <div class="modal-footer">
-            <x-bs::button :label="__('Cancel')" color="light" dismiss="modal"/>
+            <x-bs::button :label="__('Cancel')" color="secondary" dismiss="modal"/>
             <x-bs::button :label="__('Save Profile')" type="submit"/>
         </div>
     </x-bs::form>

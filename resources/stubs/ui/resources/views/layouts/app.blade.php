@@ -16,7 +16,7 @@
     <link rel="apple-touch-icon" href="{{ mix('images/icon-touch.png') }}">
     <link rel="manifest" href="{{ mix('json/manifest.json') }}">
 </head>
-<body class="d-flex flex-column bg-light h-100">
+<body class="d-flex flex-column h-100">
     <livewire:layouts.nav/>
 
     <main class="flex-shrink-0">
@@ -25,10 +25,10 @@
 
     <livewire:layouts.footer/>
 
+    <livewire:scripts/>
     <livewire:loader/>
     <livewire:modals/>
     <livewire:toasts/>
-    <livewire:scripts/>
     <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
