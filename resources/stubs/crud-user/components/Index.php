@@ -60,11 +60,6 @@ class Index extends Component
         return $query;
     }
 
-    public function updatingModelSearch()
-    {
-        $this->resetPage();
-    }
-
     public function delete(DummyModelClass $dummyModelVariable)
     {
         $dummyModelVariable->delete();
