@@ -11,11 +11,13 @@
         <div id="nav" class="collapse navbar-collapse">
             <div class="navbar-nav ms-auto">
                 @guest
-                    <a href="{{ route('login') }}"
-                        class="nav-link {{ Route::is('login') ? 'active' : '' }}">{{ __('Login') }}</a>
+                    @if(Route::has('login'))
+                        <a href="{{ route('login') }}"
+                            class="nav-link {{ Route::is('login') ? 'active' : '' }}">{{ __('Login') }}</a>
 
-                    <a href="{{ route('register') }}"
-                        class="nav-link {{ Route::is('register') ? 'active' : '' }}">{{ __('Register') }}</a>
+                        <a href="{{ route('register') }}"
+                            class="nav-link {{ Route::is('register') ? 'active' : '' }}">{{ __('Register') }}</a>
+                    @endif
                 @else
                     <div class="nav-item dropdown">
                         <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle">
