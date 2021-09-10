@@ -1,7 +1,7 @@
 {
     "name": "bastinald/laravel-livewire-ui",
     "homepage": "https://github.com/bastinald/laravel-livewire-ui",
-    "description": "Laravel Livewire UI, Auth, & CRUD starter kit.",
+    "description": "Laravel Livewire UI & auth starter kit.",
     "license": "MIT",
     "authors": [
         {
@@ -11,14 +11,12 @@
         }
     ],
     "require": {
-        "bastinald/laravel-automatic-migrations": "^2.0",
-        "bastinald/laravel-bootstrap-components": "^2.0",
-        "bastinald/laravel-livewire-loader": "^2.0",
-        "bastinald/laravel-livewire-modals": "^2.0",
-        "bastinald/laravel-livewire-routes": "^2.0",
-        "bastinald/laravel-livewire-toasts": "^2.0",
-        "jamesmills/laravel-timezone": "^1.9",
+        "bastinald/laravel-automatic-migrations": "^3.0",
+        "bastinald/laravel-livewire-modals": "^3.0",
+        "bastinald/laravel-livewire-routes": "^3.0",
+        "bastinald/laravel-livewire-toasts": "^3.0",
         "laravel/framework": "^8.0",
+        "livewire/livewire": "^2.0",
         "lukeraymonddowning/honey": "^0.3"
     },
     "autoload": {

@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Layouts;
 
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Nav extends Component
@@ -11,13 +10,6 @@ class Nav extends Component
 
     public function render()
     {
-        return view('layouts.nav');
-    }
-
-    public function logout()
-    {
-        Auth::logout();
-
-        return redirect()->to('/');
+        return view('livewire.layouts.nav');
     }
 }

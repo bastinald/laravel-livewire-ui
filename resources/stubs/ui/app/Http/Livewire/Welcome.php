@@ -14,6 +14,6 @@ class Welcome extends Component
 
     public function render()
     {
-        return view('welcome');
+        return view('livewire.welcome');
     }
 }

@@ -12,10 +12,10 @@ class LogClearCommand extends Command
     public function handle()
     {
         $filesystem = new Filesystem;
-        $logFile = storage_path('logs/laravel.log');
+        $file = storage_path('logs/laravel.log');
 
-        if ($filesystem->exists($logFile)) {
-            $filesystem->delete($logFile);
+        if ($filesystem->exists($file)) {
+            $filesystem->delete($file);
         }
 
         $this->info('Log file cleared!');

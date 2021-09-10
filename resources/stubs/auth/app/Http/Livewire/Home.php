@@ -9,12 +9,12 @@ class Home extends Component
 {
     public function route()
     {
-        return Route::get('home')
+        return Route::get('/home')
             ->middleware('auth');
     }
 
     public function render()
     {
-        return view('home');
+        return view('livewire.home');
     }
 }

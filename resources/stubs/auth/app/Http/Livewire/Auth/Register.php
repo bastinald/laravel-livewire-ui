@@ -4,47 +4,54 @@ namespace App\Http\Livewire\Auth;
 
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
-use Bastinald\LaravelBootstrapComponents\Traits\WithModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Lukeraymonddowning\Honey\Traits\WithHoney;
 
 class Register extends Component
 {
-    use WithHoney, WithModel;
+    use WithHoney;
+
+    public $name;
+    public $email;
+    public $password;
+    public $password_confirmation;
 
     public function route()
     {
-        return Route::get('register')
+        return Route::get('/register')
             ->name('register')
             ->middleware('guest');
     }
 
     public function render()
     {
-        return view('auth.register');
+        return view('livewire.auth.register');
     }
 
     public function rules()
     {
         return [
-            'name' => ['required', 'max:255'],
-            'email' => ['required', 'email', Rule::unique('users')],
+            'name' => ['required'],
+            'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'confirmed'],
         ];
     }
 
     public function register()
     {
-        $this->validateModel();
+        $this->validate();
 
         if (!$this->honeyPasses()) {
-            return;
+            return null;
         }
 
-        $user = User::create($this->model()->except('password_confirmation')->toArray());
+        $user = User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => bcrypt($this->password),
+        ]);
 
         Auth::login($user, true);
 

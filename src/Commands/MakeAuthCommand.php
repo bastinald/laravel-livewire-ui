@@ -15,7 +15,7 @@ class MakeAuthCommand extends Command
         $this->filesystem = new Filesystem;
 
         if ($this->filesystem->exists(app_path('Http/Livewire/Auth/Login.php')) && !$this->option('force')) {
-            $this->warn('It looks like Auth was already made.');
+            $this->warn('It looks like auth was already made.');
             $this->warn('Use the <info>--force</info> to overwrite it.');
 
             return;
