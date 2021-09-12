@@ -7,9 +7,8 @@
         </div>
         <form wire:submit.prevent="send" class="card-body">
             @if($status)
-                <div class="alert alert-success alert-dismissible fade show">
+                <div class="alert alert-success">
                     {{ $status }}
-                    <button type="button" data-bs-dismiss="alert" class="btn-close"></button>
                 </div>
             @endif
 
