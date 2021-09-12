@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Auth;
+namespace App\Components\Auth;
 
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -28,7 +28,7 @@ class PasswordReset extends Component
 
     public function render()
     {
-        return view('livewire.auth.password-reset');
+        return view('auth.password-reset');
     }
 
     public function rules()

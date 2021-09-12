@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Auth;
+namespace App\Components\Auth;
 
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class PasswordForgot extends Component
 {
-    public $email;
+    public $email, $status;
 
     public function route()
     {
@@ -19,7 +19,7 @@ class PasswordForgot extends Component
 
     public function render()
     {
-        return view('livewire.auth.password-forgot');
+        return view('auth.password-forgot');
     }
 
     public function rules()
@@ -31,6 +31,7 @@ class PasswordForgot extends Component
 
     public function send()
     {
+        $this->reset('status');
         $this->validate();
 
         $status = Password::sendResetLink($this->only(['email']));
@@ -41,6 +42,6 @@ class PasswordForgot extends Component
             return null;
         }
 
-        $this->emit('showToast', 'success', __($status));
+        $this->status = __($status);
     }
 }

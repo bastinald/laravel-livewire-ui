@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Auth;
+namespace App\Components\Auth;
 
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -24,7 +24,7 @@ class Register extends Component
 
     public function render()
     {
-        return view('livewire.auth.register');
+        return view('auth.register');
     }
 
     public function rules()

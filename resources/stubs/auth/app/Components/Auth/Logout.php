@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Auth;
+namespace App\Components\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +19,6 @@ class Logout extends Component
     {
         Auth::logout();
 
-        return redirect()->to('/');
+        return redirect()->route('index');
     }
 }

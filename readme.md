@@ -22,10 +22,7 @@ This package will create UI & auth scaffolding for your next Laravel project thr
 The following packages are used by this package, so you may want to become familiar with them:
 
 - [Laravel Automatic Migrations](https://github.com/bastinald/laravel-automatic-migrations)
-- [Laravel Livewire Modals](https://github.com/bastinald/laravel-livewire-modals)
 - [Laravel Livewire Routes](https://github.com/bastinald/laravel-livewire-routes)
-- [Laravel Livewire Toasts](https://github.com/bastinald/laravel-livewire-toasts)
-- [Laravel IDE Helper](https://github.com/barryvdh/laravel-ide-helper)
 - [Honey](https://github.com/lukeraymonddowning/honey)
 
 ## Installation

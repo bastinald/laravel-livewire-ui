@@ -15,7 +15,7 @@ class MakeUiCommand extends Command
     {
         $this->filesystem = new Filesystem;
 
-        if ($this->filesystem->exists(app_path('Http/Livewire/Layouts/Nav.php')) && !$this->option('force')) {
+        if ($this->filesystem->exists(app_path('Components/Index.php')) && !$this->option('force')) {
             $this->warn('It looks like UI was already made.');
             $this->warn('Use the <info>--force</info> to overwrite it.');
 
@@ -51,8 +51,6 @@ class MakeUiCommand extends Command
 
         Artisan::call('make:amodel', ['class' => 'User', '--force' => true], $this->getOutput());
         Artisan::call('migrate:auto', ['--fresh' => true, '--seed' => true], $this->getOutput());
-        Artisan::call('ide-helper:generate', [], $this->getOutput());
-        Artisan::call('ide-helper:models', ['--no-interaction' => true], $this->getOutput());
 
         exec('npm install');
         exec('npm run dev');

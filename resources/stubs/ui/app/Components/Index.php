@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Components;
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 
-class Welcome extends Component
+class Index extends Component
 {
     public function route()
     {
-        return Route::get('/');
+        return Route::get('/')
+            ->name('index');
     }
 
     public function render()
     {
-        return view('livewire.welcome');
+        return view('index');
     }
 }
