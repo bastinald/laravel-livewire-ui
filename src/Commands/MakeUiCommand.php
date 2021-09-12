@@ -46,20 +46,13 @@ class MakeUiCommand extends Command
     private function executeCommands()
     {
         if ($this->option('auth')) {
-            Artisan::call('make:auth', [
-                '--force' => $this->option('force'),
-            ], $this->getOutput());
+            Artisan::call('make:auth', ['--force' => $this->option('force')], $this->getOutput());
         }
 
-        Artisan::call('make:amodel', [
-            'class' => 'User',
-            '--force' => true,
-        ], $this->getOutput());
-
-        Artisan::call('migrate:auto', [
-            '--fresh' => true,
-            '--seed' => true,
-        ], $this->getOutput());
+        Artisan::call('make:amodel', ['class' => 'User', '--force' => true], $this->getOutput());
+        Artisan::call('migrate:auto', ['--fresh' => true, '--seed' => true], $this->getOutput());
+        Artisan::call('ide-helper:generate', [], $this->getOutput());
+        Artisan::call('ide-helper:models', ['--no-interaction' => true], $this->getOutput());
 
         exec('npm install');
         exec('npm run dev');

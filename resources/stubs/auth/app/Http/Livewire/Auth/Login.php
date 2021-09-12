@@ -10,9 +10,7 @@ use Livewire\Component;
 
 class Login extends Component
 {
-    public $email;
-    public $password;
-    public $remember = false;
+    public $email, $password, $remember;
 
     public function route()
     {

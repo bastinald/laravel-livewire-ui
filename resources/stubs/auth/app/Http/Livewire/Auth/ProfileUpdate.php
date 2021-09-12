@@ -8,8 +8,7 @@ use Livewire\Component;
 
 class ProfileUpdate extends Component
 {
-    public $name;
-    public $email;
+    public $name, $email;
 
     public function mount()
     {
@@ -30,7 +29,7 @@ class ProfileUpdate extends Component
         ];
     }
 
-    public function save()
+    public function update()
     {
         $this->validate();
 

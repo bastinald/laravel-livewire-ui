@@ -1,5 +1,5 @@
 <div class="modal-dialog">
-    <form wire:submit.prevent="save" class="modal-content">
+    <form wire:submit.prevent="update" class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title">{{ __('Update Profile') }}</h5>
             <button type="button" data-bs-dismiss="modal" class="btn-close"></button>
@@ -21,7 +21,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" data-bs-dismiss="modal" class="btn btn-secondary">{{ __('Cancel') }}</button>
-            <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+            <button type="submit" class="btn btn-primary">{{ __('Update Profile') }}</button>
         </div>
     </form>
 </div>

@@ -1,5 +1,5 @@
 <div class="modal-dialog">
-    <form wire:submit.prevent="save" class="modal-content">
+    <form wire:submit.prevent="change" class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title">{{ __('Change Password') }}</h5>
             <button type="button" data-bs-dismiss="modal" class="btn-close"></button>
@@ -27,7 +27,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" data-bs-dismiss="modal" class="btn btn-secondary">{{ __('Cancel') }}</button>
-            <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+            <button type="submit" class="btn btn-primary">{{ __('Change Password') }}</button>
         </div>
     </form>
 </div>

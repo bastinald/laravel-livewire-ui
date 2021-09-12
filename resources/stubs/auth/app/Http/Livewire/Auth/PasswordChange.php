@@ -7,9 +7,7 @@ use Livewire\Component;
 
 class PasswordChange extends Component
 {
-    public $current_password;
-    public $password;
-    public $password_confirmation;
+    public $current_password, $password, $password_confirmation;
 
     public function render()
     {
@@ -24,7 +22,7 @@ class PasswordChange extends Component
         ];
     }
 
-    public function save()
+    public function change()
     {
         $this->validate();
 

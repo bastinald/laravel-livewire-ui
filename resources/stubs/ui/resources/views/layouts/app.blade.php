@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body>
-    <livewire:layouts.nav/>
+    <livewire:navbar/>
 
     {{ $slot }}
 

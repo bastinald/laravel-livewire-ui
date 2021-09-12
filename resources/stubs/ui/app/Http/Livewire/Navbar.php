@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Livewire\Layouts;
+namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class Nav extends Component
+class Navbar extends Component
 {
     protected $listeners = ['$refresh'];
 
     public function render()
     {
-        return view('livewire.layouts.nav');
+        return view('livewire.navbar');
     }
 }

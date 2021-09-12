@@ -11,6 +11,7 @@
         }
     ],
     "require": {
+        "barryvdh/laravel-ide-helper": "^2.10",
         "bastinald/laravel-automatic-migrations": "^3.0",
         "bastinald/laravel-livewire-modals": "^3.0",
         "bastinald/laravel-livewire-routes": "^3.0",

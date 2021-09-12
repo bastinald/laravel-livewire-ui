@@ -4,7 +4,7 @@
     <div class="d-grid col-lg-4 mx-auto">
         <form wire:submit.prevent="resetPassword" class="card">
             <div class="card-header">
-                @yield('title')
+                {{ __('Reset Password') }}
             </div>
             <div class="card-body">
                 <div class="mb-3">

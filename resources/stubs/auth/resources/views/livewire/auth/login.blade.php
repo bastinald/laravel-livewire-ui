@@ -4,7 +4,7 @@
     <div class="d-grid col-lg-4 mx-auto">
         <form wire:submit.prevent="login" class="card">
             <div class="card-header">
-                @yield('title')
+                {{ __('Login') }}
             </div>
             <div class="card-body">
                 <div class="mb-3">

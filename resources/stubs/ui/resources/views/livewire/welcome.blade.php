@@ -4,7 +4,7 @@
     <div class="d-grid col-lg-4 mx-auto">
         <div class="card">
             <div class="card-header">
-                @yield('title')
+                {{ __('Welcome') }}
             </div>
             <div class="card-body">
                 {{ __('Build something amazing!') }}
