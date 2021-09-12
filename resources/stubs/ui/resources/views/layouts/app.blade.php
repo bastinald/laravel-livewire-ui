@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a href="{{ route('index') }}" class="navbar-brand">
-                <i class="fa fa-fw fa-code text-primary"></i> {{ config('app.name') }}
+                <i class="fa fa-code text-primary"></i> {{ config('app.name') }}
             </a>
 
             <button type="button" data-bs-toggle="collapse" data-bs-target="#nav" class="navbar-toggler">
@@ -31,7 +31,7 @@
                     @else
                         <div class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle">
-                                <i class="fa fa-fw fa-user"></i> {{ Auth::user()->name }}
+                                <i class="fa fa-user"></i> {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="{{ route('logout') }}" class="dropdown-item">Logout</a>
